@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Radiograph Evaluation</title>
+  <title>Radiograph Evaluation - AI or Real</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,55 +15,60 @@
       <button onclick="startSession()">Start</button>
     </div>
 
-    <div id="questionnaire" style="display:none;">
+    <!-- Image Questionnaire Section -->
+    <div id="image-section" style="display:none;">
       <div id="progress"></div>
       <img id="radiograph" src="" alt="Radiograph" />
-      
       <div class="question-block">
-        <label>1. Rate technical quality (1–5):</label>
-        <select id="q1">
-          <option value="">Select</option>
-          <option>1</option><option>2</option><option>3</option>
-          <option>4</option><option>5</option>
-        </select>
+        <label>1. Is this image AI-generated (not from a real patient) or Real?</label><br/>
+        <label><input type="radio" name="q1" value="AI Generated" /> AI Generated</label>
+        <label><input type="radio" name="q1" value="Real" /> Real</label>
       </div>
-
       <div class="question-block">
-        <label>2. Significant artifacts?</label>
-        <select id="q2">
-          <option value="">Select</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+        <label>2. What is your confidence in this answer (1–5)?</label><br/>
+        <label><input type="radio" name="q2" value="1" /> 1</label>
+        <label><input type="radio" name="q2" value="2" /> 2</label>
+        <label><input type="radio" name="q2" value="3" /> 3</label>
+        <label><input type="radio" name="q2" value="4" /> 4</label>
+        <label><input type="radio" name="q2" value="5" /> 5</label>
       </div>
-
-      <div class="question-block">
-        <label>3. Notable abnormality (check all that apply):</label><br/>
-        <label><input type="checkbox" value="No" /> No</label>
-        <label><input type="checkbox" value="Osteoarthritis" /> Osteoarthritis</label>
-        <label><input type="checkbox" value="Infection" /> Infection</label>
-        <label><input type="checkbox" value="Tumor/Lesion" /> Tumor/Lesion</label>
-        <label><input type="checkbox" value="Interstitial disease" /> Interstitial disease</label>
-        <label><input type="checkbox" value="Fracture" /> Fracture</label>
-        <label><input type="checkbox" value="Dislocation" /> Dislocation</label>
-        <label><input type="checkbox" value="Cardiomegaly" /> Cardiomegaly</label>
-        <label><input type="checkbox" value="Effusion" /> Effusion</label>
-        <label><input type="checkbox" value="Anatomical Variant" /> Anatomical Variant</label>
-      </div>
-
-      <div class="question-block">
-        <label>4. Any additional comment:</label><br/>
-        <textarea id="q4" rows="3" cols="40"></textarea>
-      </div>
-
       <div class="buttons">
         <button onclick="prevImage()">Previous</button>
         <button onclick="nextImage()">Next</button>
+      </div>
+    </div>
+
+    <!-- Extra Questions Section -->
+    <div id="extra-section" style="display:none;">
+      <h2>Final Questions</h2>
+      <div class="question-block">
+        <label>1. Had you heard before about AI generated medical images?</label><br/>
+        <label><input type="radio" name="extra_q1" value="Yes" /> Yes</label>
+        <label><input type="radio" name="extra_q1" value="No" /> No</label>
+      </div>
+      <div class="question-block">
+        <label>2. Did you know that ChatGPT-4o could generate this kind of images?</label><br/>
+        <label><input type="radio" name="extra_q2" value="Yes" /> Yes</label>
+        <label><input type="radio" name="extra_q2" value="No" /> No</label>
+      </div>
+      <div class="question-block">
+        <label>3. Do you feel confident in differentiating Real radiographs from AI‐generated ones? (1–5)</label><br/>
+        <label><input type="radio" name="extra_q3" value="1" /> 1</label>
+        <label><input type="radio" name="extra_q3" value="2" /> 2</label>
+        <label><input type="radio" name="extra_q3" value="3" /> 3</label>
+        <label><input type="radio" name="extra_q3" value="4" /> 4</label>
+        <label><input type="radio" name="extra_q3" value="5" /> 5</label>
+      </div>
+      <div class="question-block">
+        <label>4. What is your subspecialty in radiology (if any) and your number of years of experience (after residency/current year if resident):</label><br/>
+        <textarea id="extra_q4" rows="3" cols="40"></textarea>
+      </div>
+      <div class="buttons">
+        <button onclick="prevExtra()">Previous</button>
         <button id="submitBtn" onclick="submitAll()" disabled>Submit All</button>
       </div>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
