@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radiograph Evaluation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>Radiograph Evaluation</h1>
+    <div id="login-section">
+      <label for="userID">Enter your email or ID:</label>
+      <input type="text" id="userID" />
+      <button onclick="startSession()">Start</button>
+    </div>
+
+    <div id="questionnaire" style="display:none;">
+      <div id="progress"></div>
+      <img id="radiograph" src="" alt="Radiograph" />
+      
+      <div class="question-block">
+        <label>1. Rate technical quality (1–5):</label>
+        <select id="q1">
+          <option value="">Select</option>
+          <option>1</option><option>2</option><option>3</option>
+          <option>4</option><option>5</option>
+        </select>
+      </div>
+
+      <div class="question-block">
+        <label>2. Significant artifacts?</label>
+        <select id="q2">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <div class="question-block">
+        <label>3. Notable abnormality (check all that apply):</label><br/>
+        <label><input type="checkbox" value="No" /> No</label>
+        <label><input type="checkbox" value="Osteoarthritis" /> Osteoarthritis</label>
+        <label><input type="checkbox" value="Infection" /> Infection</label>
+        <label><input type="checkbox" value="Tumor/Lesion" /> Tumor/Lesion</label>
+        <label><input type="checkbox" value="Interstitial disease" /> Interstitial disease</label>
+        <label><input type="checkbox" value="Fracture" /> Fracture</label>
+        <label><input type="checkbox" value="Dislocation" /> Dislocation</label>
+        <label><input type="checkbox" value="Cardiomegaly" /> Cardiomegaly</label>
+        <label><input type="checkbox" value="Effusion" /> Effusion</label>
+        <label><input type="checkbox" value="Anatomical Variant" /> Anatomical Variant</label>
+      </div>
+
+      <div class="question-block">
+        <label>4. Any additional comment:</label><br/>
+        <textarea id="q4" rows="3" cols="40"></textarea>
+      </div>
+
+      <div class="buttons">
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+        <button id="submitBtn" onclick="submitAll()" disabled>Submit All</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
